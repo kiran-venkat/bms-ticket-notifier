@@ -13,6 +13,7 @@ from datetime import datetime
 from dataclasses import dataclass, field
 from urllib.parse import urlparse
 import requests
+from curl_cffi import requests as browser
 
 # ──────────────────────────────────────────────────────────────────────
 # CONFIGURATION — set via GitHub Secrets / Variables
@@ -38,7 +39,7 @@ STATE_FILE = "bms_state.json"
 AVAIL_STATUS_MAP = {
     "0": ("SOLD OUT",    "🔴"),
     "1": ("ALMOST FULL", "🟡"),
-    "2": ("FILLING FAST","orange_circle"), # Use standard naming description or icon
+    "2": ("FILLING FAST","🟠"), 
     "3": ("AVAILABLE",   "🟢"),
 }
 
@@ -135,7 +136,7 @@ def fetch_bms(event_code, date_code, region_code, region_slug,
     headers = {
         "User-Agent": (
             "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
-            "AppleWebKit/537.36 (KHTML, Gecko) "
+            "AppleWebKit/537.36 (KHTML, like Gecko) "
             "Chrome/145.0.0.0 Safari/537.36"
         ),
         "Accept": "application/json, text/plain, */*",
@@ -161,11 +162,12 @@ def fetch_bms(event_code, date_code, region_code, region_slug,
         "lat": lat, "lon": lon,
     }
     try:
-        resp = requests.get(API_URL, headers=headers, params=params, timeout=15)
+        # Utilizing curl_cffi requests layout to impersonate Chrome client TLS fingerprint
+        resp = browser.get(API_URL, headers=headers, params=params, timeout=15, impersonate="chrome")
         if resp.status_code == 200:
             return resp.json()
         print(f"  HTTP {resp.status_code}")
-    except requests.RequestException as e:
+    except Exception as e:
         print(f"  Request failed: {e}")
     return None
 

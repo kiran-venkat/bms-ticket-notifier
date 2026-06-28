@@ -23,14 +23,13 @@ jobs:
           python-version: "3.14"
 
       - name: Install dependencies
-        run: uv sync --frozen
+        # Bypasses the frozen lockfile to cleanly add curl_cffi and requests to the global scope
+        run: uv pip install --system requests curl_cffi
 
       - name: Run checker
         env:
-          # Changed from RESEND to TELEGRAM
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          # Kept the BMS variables exactly the same
           BMS_URL: ${{ vars.BMS_URL }}
           BMS_DATES: ${{ vars.BMS_DATES }}
           BMS_THEATRE: ${{ vars.BMS_THEATRE }}
