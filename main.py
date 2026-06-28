@@ -148,7 +148,32 @@ def fetch_bms(event_code, date_code, region_code, region_slug, lat, lon, geohash
     return None
 
 
-def parse_movie_info(data):
+def parse_movie_info(data, movie_url):
+    info = {"name": "Unknown Movie", "language": ""}
+    
+    # Try to grab the language/format (e.g., "English • 2D") if it exists
+    for w in data.get("data", {}).get("topStickyWidgets", []):
+        if w.get("type") == "horizontal-text-list":
+            for item in w.get("data", []):
+                for row in item.get("leftText", {}).get("data", []):
+                    for c in row.get("components", []):
+                        if "•" in c.get("text", ""):
+                            info["language"] = c["text"].strip()
+
+    # ALWAYS rip the movie title directly from the URL slug
+    if movie_url:
+        try:
+            parts = urlparse(movie_url).path.strip("/").split("/")
+            if "movies" in parts:
+                idx = parts.index("movies")
+                if len(parts) > idx + 2:
+                    raw_slug = parts[idx + 2] # Extracts 'spiderman-brand-new-day'
+                    # Cleans it up to 'Spiderman Brand New Day'
+                    info["name"] = raw_slug.replace("-", " ").title()
+        except Exception:
+            pass
+
+    return info
     info = {"name": "Unknown Movie", "language": ""}
     for w in data.get("data", {}).get("topStickyWidgets", []):
         if w.get("type") == "horizontal-text-list":
@@ -409,7 +434,7 @@ def main():
                 continue
 
             if movie_info["name"] == "Unknown":
-                movie_info = parse_movie_info(data)
+                movie_info = parse_movie_info(data,movie_url)
 
             movie_dates.extend(parse_dates(data))
             movie_shows.extend(parse_shows(data))
