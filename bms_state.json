@@ -135,6 +135,78 @@
       "price": "295.00",
       "status": "1",
       "event": "ET00452034"
+    },
+    "ET00489559|INMB|71866|20260628|RECLINER ROWS": {
+      "venue": "INOX: Mantri Square, Malleshwaram",
+      "time": "07:00 PM",
+      "date": "20260628",
+      "cat": "RECLINER ROWS",
+      "price": "590.00",
+      "status": "0",
+      "event": "ET00489559"
+    },
+    "ET00489559|INMB|71866|20260628|PRIME ROWS": {
+      "venue": "INOX: Mantri Square, Malleshwaram",
+      "time": "07:00 PM",
+      "date": "20260628",
+      "cat": "PRIME ROWS",
+      "price": "350.00",
+      "status": "1",
+      "event": "ET00489559"
+    },
+    "ET00489559|INMB|71866|20260628|CLASSIC PLUS ROWS": {
+      "venue": "INOX: Mantri Square, Malleshwaram",
+      "time": "07:00 PM",
+      "date": "20260628",
+      "cat": "CLASSIC PLUS ROWS",
+      "price": "320.00",
+      "status": "3",
+      "event": "ET00489559"
+    },
+    "ET00489559|INMB|71866|20260628|CLASSIC ROWS": {
+      "venue": "INOX: Mantri Square, Malleshwaram",
+      "time": "07:00 PM",
+      "date": "20260628",
+      "cat": "CLASSIC ROWS",
+      "price": "280.00",
+      "status": "3",
+      "event": "ET00489559"
+    },
+    "ET00489559|INMB|71877|20260628|EXTRA LEGROOM ROWS": {
+      "venue": "INOX: Mantri Square, Malleshwaram",
+      "time": "10:10 PM",
+      "date": "20260628",
+      "cat": "EXTRA LEGROOM ROWS",
+      "price": "310.00",
+      "status": "2",
+      "event": "ET00489559"
+    },
+    "ET00489559|INMB|71877|20260628|PRIME ROWS": {
+      "venue": "INOX: Mantri Square, Malleshwaram",
+      "time": "10:10 PM",
+      "date": "20260628",
+      "cat": "PRIME ROWS",
+      "price": "270.00",
+      "status": "3",
+      "event": "ET00489559"
+    },
+    "ET00489559|INMB|71877|20260628|CLASSIC PLUS ROWS": {
+      "venue": "INOX: Mantri Square, Malleshwaram",
+      "time": "10:10 PM",
+      "date": "20260628",
+      "cat": "CLASSIC PLUS ROWS",
+      "price": "240.00",
+      "status": "3",
+      "event": "ET00489559"
+    },
+    "ET00489559|INMB|71877|20260628|CLASSIC ROWS": {
+      "venue": "INOX: Mantri Square, Malleshwaram",
+      "time": "10:10 PM",
+      "date": "20260628",
+      "cat": "CLASSIC ROWS",
+      "price": "220.00",
+      "status": "3",
+      "event": "ET00489559"
     }
   },
   "dates": {
@@ -157,6 +229,13 @@
     "ET00452034|20260726": "AVAILABLE",
     "ET00452034|20260727": "AVAILABLE",
     "ET00452034|20260728": "AVAILABLE",
-    "ET00452034|20260729": "AVAILABLE"
+    "ET00452034|20260729": "AVAILABLE",
+    "ET00489559|20260628": "BOOKABLE",
+    "ET00489559|20260629": "AVAILABLE",
+    "ET00489559|20260630": "AVAILABLE",
+    "ET00489559|20260701": "AVAILABLE",
+    "ET00489559|20260702": "AVAILABLE",
+    "ET00489559|20260703": "NOT_OPEN",
+    "ET00489559|20260704": "NOT_OPEN"
   }
 }
