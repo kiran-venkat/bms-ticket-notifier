@@ -3,8 +3,8 @@ name: BMS Ticket Checker
 on:
   schedule:
     # Every 30 minutes
-    - cron: '*/30 * * * *'
-  workflow_dispatch:  # Manual trigger button
+    - cron: "*/30 * * * *"
+  workflow_dispatch: # Manual trigger button
 
 jobs:
   check-tickets:
@@ -20,16 +20,17 @@ jobs:
       - name: Set up uv
         uses: astral-sh/setup-uv@v7
         with:
-          python-version: '3.14'
+          python-version: "3.14"
 
       - name: Install dependencies
         run: uv sync --frozen
 
       - name: Run checker
         env:
-          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
-          RESEND_TO_EMAIL: ${{ secrets.RESEND_TO_EMAIL }}
-          RESEND_FROM_EMAIL: ${{ secrets.RESEND_FROM_EMAIL }}
+          # Changed from RESEND to TELEGRAM
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          # Kept the BMS variables exactly the same
           BMS_URL: ${{ vars.BMS_URL }}
           BMS_DATES: ${{ vars.BMS_DATES }}
           BMS_THEATRE: ${{ vars.BMS_THEATRE }}
