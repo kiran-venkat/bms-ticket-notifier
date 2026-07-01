@@ -160,7 +160,15 @@ def parse_movie_info(data, movie_url):
                         if "•" in c.get("text", ""):
                             info["language"] = c["text"].strip()
 
-    # ALWAYS rip the movie title directly from the URL slug
+    # Fallback to bottom sheet for title if available
+    bs = data.get("data", {}).get("bottomSheetData", {})
+    for w in bs.get("format-selector", {}).get("widgets", []):
+        if w.get("type") == "vertical-text-list":
+            for d in w.get("data", []):
+                if d.get("styleId") == "bottomsheet-subtitle":
+                    info["name"] = d.get("text", info["name"])
+
+    # ALWAYS rip the movie title directly from the URL slug as a priority
     if movie_url:
         try:
             parts = urlparse(movie_url).path.strip("/").split("/")
@@ -173,21 +181,6 @@ def parse_movie_info(data, movie_url):
         except Exception:
             pass
 
-    return info
-    info = {"name": "Unknown Movie", "language": ""}
-    for w in data.get("data", {}).get("topStickyWidgets", []):
-        if w.get("type") == "horizontal-text-list":
-            for item in w.get("data", []):
-                for row in item.get("leftText", {}).get("data", []):
-                    for c in row.get("components", []):
-                        if "•" in c.get("text", ""):
-                            info["language"] = c["text"].strip()
-    bs = data.get("data", {}).get("bottomSheetData", {})
-    for w in bs.get("format-selector", {}).get("widgets", []):
-        if w.get("type") == "vertical-text-list":
-            for d in w.get("data", []):
-                if d.get("styleId") == "bottomsheet-subtitle":
-                    info["name"] = d.get("text", info["name"])
     return info
 
 
@@ -389,7 +382,7 @@ def main():
     now_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     print(f"[{now_str}] BMS Multi-Ticket Checker Active")
 
-    # Split the input string into separate URLs
+    # 1. Parse and validate standard configuration URLs
     urls = [u.strip() for u in CONFIG["url"].split(",") if u.strip()]
     if not urls:
         print("  ❌ No URLs found in BMS_URL environment variable.")
@@ -398,11 +391,15 @@ def main():
     old_state = load_state()
     new_state = {"shows": {}, "dates": {}}
 
-    # Preserve historical states for other tracking entries not currently called in this execution list
+    # 2. Seed runtime state with historical data so un-scraped values aren't lost
     if old_state:
         new_state["shows"].update(old_state.get("shows", {}))
         new_state["dates"].update(old_state.get("dates", {}))
 
+    # Queue tracking lists to isolate background notifications from state loops
+    pending_notifications = []
+
+    # 3. Process every target URL sequentially
     for movie_url in urls:
         print(f"\nProcessing Movie Link: {movie_url}")
         parsed = parse_bms_url(movie_url)
@@ -428,40 +425,48 @@ def main():
         movie_dates = []
         movie_info = {"name": "Unknown", "language": ""}
 
+        # 4. Fetch the remote API layout data matrices
         for dc in date_list:
             data = fetch_bms(event_code, dc, region_code, region_slug_r, lat, lon, geohash, movie_url)
             if not data:
                 continue
 
             if movie_info["name"] == "Unknown":
-                movie_info = parse_movie_info(data,movie_url)
+                movie_info = parse_movie_info(data, movie_url)
 
             movie_dates.extend(parse_dates(data))
             movie_shows.extend(parse_shows(data))
 
         if not movie_shows:
-            print("  ❌ No current showtimes found for this title.")
+            print(f"  ❌ No current showtimes found for this target configuration.")
             continue
 
         print(f"  🎬 {movie_info['name']} ({movie_info['language']})")
 
+        # 5. Apply theater criteria filter matching rules
         filtered = filter_shows(movie_shows, CONFIG["theatre"], CONFIG["time_period"], CONFIG["dates"])
         print(f"  📊 {len(filtered)} showtime(s) matching criteria filters")
 
-        # Append data to global runtime collection
+        # 6. Structurally map findings into the execution global dictionary
         append_to_state(new_state, event_code, filtered, movie_dates)
 
-        # Check for modifications against the last execution cycle
+        # 7. Evaluate differences cleanly against the original file state
         if old_state:
             changes = detect_movie_changes(old_state, new_state, event_code)
             if changes:
-                print(f"  ⚡ {len(changes)} update(s) caught!")
-                send_telegram_message(changes, movie_info, movie_url)
+                pending_notifications.append((changes, movie_info, movie_url))
             else:
                 print("  ✅ No structural updates caught since the last run cycle.")
 
-    # Commit unified tracking data state at completion
+    # 8. Write the complete unified state back to disk
     save_state(new_state)
+    print("\nState Committed to disk successfully.")
+
+    # 9. Dispatch independent communication payloads
+    for changes, movie_info, movie_url in pending_notifications:
+        print(f"  ⚡ {len(changes)} update(s) caught for {movie_info['name']}!")
+        send_telegram_message(changes, movie_info, movie_url)
+
     print("\nBatch Operations Finished.")
 
 
