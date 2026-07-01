@@ -125,6 +125,78 @@
       "price": "250.00",
       "status": "3",
       "event": "ET00489559"
+    },
+    "ET00489559|TLUR|37173|20260701|GOLD": {
+      "venue": "Talluri Theatres: Kushaiguda",
+      "time": "11:00 AM",
+      "date": "20260701",
+      "cat": "GOLD",
+      "price": "150.00",
+      "status": "2",
+      "event": "ET00489559"
+    },
+    "ET00489559|TLUR|37173|20260701|SILVER": {
+      "venue": "Talluri Theatres: Kushaiguda",
+      "time": "11:00 AM",
+      "date": "20260701",
+      "cat": "SILVER",
+      "price": "75.00",
+      "status": "2",
+      "event": "ET00489559"
+    },
+    "ET00489559|TLUR|37174|20260701|GOLD": {
+      "venue": "Talluri Theatres: Kushaiguda",
+      "time": "02:00 PM",
+      "date": "20260701",
+      "cat": "GOLD",
+      "price": "150.00",
+      "status": "2",
+      "event": "ET00489559"
+    },
+    "ET00489559|TLUR|37174|20260701|SILVER": {
+      "venue": "Talluri Theatres: Kushaiguda",
+      "time": "02:00 PM",
+      "date": "20260701",
+      "cat": "SILVER",
+      "price": "75.00",
+      "status": "2",
+      "event": "ET00489559"
+    },
+    "ET00489559|TLUR|37175|20260701|GOLD": {
+      "venue": "Talluri Theatres: Kushaiguda",
+      "time": "06:00 PM",
+      "date": "20260701",
+      "cat": "GOLD",
+      "price": "150.00",
+      "status": "2",
+      "event": "ET00489559"
+    },
+    "ET00489559|TLUR|37175|20260701|SILVER": {
+      "venue": "Talluri Theatres: Kushaiguda",
+      "time": "06:00 PM",
+      "date": "20260701",
+      "cat": "SILVER",
+      "price": "75.00",
+      "status": "2",
+      "event": "ET00489559"
+    },
+    "ET00489559|TLUR|37176|20260701|GOLD": {
+      "venue": "Talluri Theatres: Kushaiguda",
+      "time": "09:00 PM",
+      "date": "20260701",
+      "cat": "GOLD",
+      "price": "150.00",
+      "status": "3",
+      "event": "ET00489559"
+    },
+    "ET00489559|TLUR|37176|20260701|SILVER": {
+      "venue": "Talluri Theatres: Kushaiguda",
+      "time": "09:00 PM",
+      "date": "20260701",
+      "cat": "SILVER",
+      "price": "75.00",
+      "status": "3",
+      "event": "ET00489559"
     }
   },
   "dates": {
