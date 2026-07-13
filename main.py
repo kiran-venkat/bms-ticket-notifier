@@ -28,6 +28,10 @@ CONFIG = {
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "")
 TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID", "")
 
+# Additional recipients: comma-aligned lists, e.g. "token1,token2" / "chat1,chat2"
+TELEGRAM_BOT_TOKENS_EXTRA = os.getenv("TELEGRAM_BOT_TOKENS_EXTRA", "")
+TELEGRAM_CHAT_IDS_EXTRA = os.getenv("TELEGRAM_CHAT_IDS_EXTRA", "")
+
 STATE_FILE = "bms_state.json"
 
 # ──────────────────────────────────────────────────────────────────────
@@ -338,12 +342,24 @@ def detect_movie_changes(old_state, new_state, event_code):
     return changes
 
 
-def send_telegram_message(changes, movie_info, movie_url):
-    bot_token = TELEGRAM_BOT_TOKEN.strip()
-    chat_id = TELEGRAM_CHAT_ID.strip()
+def get_telegram_recipients():
+    """Builds the list of (bot_token, chat_id) pairs to notify."""
+    recipients = []
+    if TELEGRAM_BOT_TOKEN.strip() and TELEGRAM_CHAT_ID.strip():
+        recipients.append((TELEGRAM_BOT_TOKEN.strip(), TELEGRAM_CHAT_ID.strip()))
 
-    if not bot_token or not chat_id:
-        print("  ⚠️  Skipping Telegram — Token or Chat ID not configured.")
+    extra_tokens = [t.strip() for t in TELEGRAM_BOT_TOKENS_EXTRA.split(",") if t.strip()]
+    extra_chats = [c.strip() for c in TELEGRAM_CHAT_IDS_EXTRA.split(",") if c.strip()]
+    for token, chat_id in zip(extra_tokens, extra_chats):
+        recipients.append((token, chat_id))
+
+    return recipients
+
+
+def send_telegram_message(changes, movie_info, movie_url):
+    recipients = get_telegram_recipients()
+    if not recipients:
+        print("  ⚠️  Skipping Telegram — no bot token/chat ID pairs configured.")
         return
 
     now_str = datetime.now().strftime("%d %b %Y, %I:%M %p")
@@ -361,21 +377,22 @@ def send_telegram_message(changes, movie_info, movie_url):
 
     message += f"🔗 <a href='{movie_url}'>Book Tickets Here</a>"
 
-    try:
-        url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
-        payload = {
-            "chat_id": chat_id,
-            "text": message,
-            "parse_mode": "HTML",
-            "disable_web_page_preview": True
-        }
-        resp = requests.post(url, json=payload, timeout=15)
-        if resp.status_code == 200:
-            print(f"  ✅ Telegram alert sent for {movie_name}!")
-        else:
-            print(f"  ❌ Telegram API Error {resp.status_code}: {resp.text}")
-    except Exception as e:
-        print(f"  ❌ Telegram request failed: {e}")
+    for bot_token, chat_id in recipients:
+        try:
+            url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
+            payload = {
+                "chat_id": chat_id,
+                "text": message,
+                "parse_mode": "HTML",
+                "disable_web_page_preview": True
+            }
+            resp = requests.post(url, json=payload, timeout=15)
+            if resp.status_code == 200:
+                print(f"  ✅ Telegram alert sent for {movie_name}! (chat {chat_id})")
+            else:
+                print(f"  ❌ Telegram API Error {resp.status_code}: {resp.text}")
+        except Exception as e:
+            print(f"  ❌ Telegram request failed: {e}")
 
 
 def main():
