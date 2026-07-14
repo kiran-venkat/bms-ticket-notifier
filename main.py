@@ -26,11 +26,8 @@ CONFIG = {
 }
 
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "")
+# Comma-separated to support multiple recipients (groups and/or DMs)
 TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID", "")
-
-# Additional recipients: comma-aligned lists, e.g. "token1,token2" / "chat1,chat2"
-TELEGRAM_BOT_TOKENS_EXTRA = os.getenv("TELEGRAM_BOT_TOKENS_EXTRA", "")
-TELEGRAM_CHAT_IDS_EXTRA = os.getenv("TELEGRAM_CHAT_IDS_EXTRA", "")
 
 STATE_FILE = "bms_state.json"
 
@@ -343,17 +340,17 @@ def detect_movie_changes(old_state, new_state, event_code):
 
 
 def get_telegram_recipients():
-    """Builds the list of (bot_token, chat_id) pairs to notify."""
-    recipients = []
-    if TELEGRAM_BOT_TOKEN.strip() and TELEGRAM_CHAT_ID.strip():
-        recipients.append((TELEGRAM_BOT_TOKEN.strip(), TELEGRAM_CHAT_ID.strip()))
+    """Builds the list of (bot_token, chat_id) pairs to notify.
 
-    extra_tokens = [t.strip() for t in TELEGRAM_BOT_TOKENS_EXTRA.split(",") if t.strip()]
-    extra_chats = [c.strip() for c in TELEGRAM_CHAT_IDS_EXTRA.split(",") if c.strip()]
-    for token, chat_id in zip(extra_tokens, extra_chats):
-        recipients.append((token, chat_id))
+    TELEGRAM_CHAT_ID may hold multiple comma-separated chat IDs (e.g. a
+    group plus a person's DM) — all notified via the same bot token.
+    """
+    bot_token = TELEGRAM_BOT_TOKEN.strip()
+    if not bot_token:
+        return []
 
-    return recipients
+    chat_ids = [c.strip() for c in TELEGRAM_CHAT_ID.split(",") if c.strip()]
+    return [(bot_token, chat_id) for chat_id in chat_ids]
 
 
 def send_telegram_message(changes, movie_info, movie_url):

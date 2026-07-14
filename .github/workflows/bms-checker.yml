@@ -28,8 +28,6 @@ jobs:
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          TELEGRAM_BOT_TOKENS_EXTRA: ${{ secrets.TELEGRAM_BOT_TOKENS_EXTRA }}
-          TELEGRAM_CHAT_IDS_EXTRA: ${{ secrets.TELEGRAM_CHAT_IDS_EXTRA }}
           BMS_URL: ${{ vars.BMS_URL }}
           BMS_DATES: ${{ vars.BMS_DATES }}
           BMS_THEATRE: ${{ vars.BMS_THEATRE }}
