@@ -201,7 +201,14 @@ def parse_dates(data):
     return dates
 
 
-def parse_shows(data):
+def parse_shows(data, queried_date_code=""):
+    """queried_date_code: the dateCode we explicitly requested from BMS, if any.
+
+    BMS's own showDateCode/cutOffDateTime fields are sometimes stale (seen
+    returning a past date even when the venue's response is scoped to a
+    later requested date) — since the API call itself is already scoped to
+    queried_date_code, that's the trustworthy date, so prefer it.
+    """
     shows = []
     for w in data.get("data", {}).get("showtimeWidgets", []):
         if w.get("type") != "groupList":
@@ -218,9 +225,12 @@ def parse_shows(data):
 
                 for st in card.get("showtimes", []):
                     sa = st.get("additionalData", {})
-                    date_code = str(sa.get("showDateCode", "") or sa.get("dateCode", "")).strip()
-                    if not date_code and re.match(r"^\d{8}", sa.get("cutOffDateTime", "")):
-                        date_code = sa["cutOffDateTime"][:8]
+                    if queried_date_code:
+                        date_code = queried_date_code
+                    else:
+                        date_code = str(sa.get("showDateCode", "") or sa.get("dateCode", "")).strip()
+                        if not date_code and re.match(r"^\d{8}", sa.get("cutOffDateTime", "")):
+                            date_code = sa["cutOffDateTime"][:8]
 
                     show = ShowInfo(
                         venue_code=vcode,
@@ -449,7 +459,7 @@ def main():
                 movie_info = parse_movie_info(data, movie_url)
 
             movie_dates.extend(parse_dates(data))
-            movie_shows.extend(parse_shows(data))
+            movie_shows.extend(parse_shows(data, queried_date_code=dc))
 
         if not movie_shows:
             print(f"  ❌ No current showtimes found for this target configuration.")
