@@ -528,7 +528,7 @@
       "date": "20260725",
       "cat": "ELITE",
       "price": "210.98",
-      "status": "1",
+      "status": "2",
       "event": "ET00452034"
     },
     "ET00452034|PVPZ|35497|20260725|BUDGET": {
@@ -618,7 +618,7 @@
       "date": "20260726",
       "cat": "ELITE",
       "price": "210.98",
-      "status": "1",
+      "status": "2",
       "event": "ET00452034"
     },
     "ET00452034|PVPZ|35497|20260726|BUDGET": {
@@ -708,7 +708,7 @@
       "date": "20260727",
       "cat": "ELITE",
       "price": "210.98",
-      "status": "1",
+      "status": "2",
       "event": "ET00452034"
     },
     "ET00452034|PVPZ|35497|20260727|BUDGET": {
@@ -798,7 +798,7 @@
       "date": "20260728",
       "cat": "ELITE",
       "price": "210.98",
-      "status": "1",
+      "status": "2",
       "event": "ET00452034"
     },
     "ET00452034|PVPZ|35497|20260728|BUDGET": {
@@ -888,7 +888,7 @@
       "date": "20260729",
       "cat": "ELITE",
       "price": "210.98",
-      "status": "1",
+      "status": "2",
       "event": "ET00452034"
     },
     "ET00452034|PVPZ|35497|20260729|BUDGET": {
@@ -978,7 +978,7 @@
       "date": "20260730",
       "cat": "ELITE",
       "price": "210.98",
-      "status": "1",
+      "status": "2",
       "event": "ET00452034"
     },
     "ET00452034|PVPZ|35497|20260730|BUDGET": {
@@ -987,7 +987,7 @@
       "date": "20260730",
       "cat": "BUDGET",
       "price": "61.74",
-      "status": "1",
+      "status": "0",
       "event": "ET00452034"
     },
     "ET00452034|INPR|63308|20260731|ELITE": {
@@ -1068,7 +1068,7 @@
       "date": "20260731",
       "cat": "ELITE",
       "price": "210.98",
-      "status": "1",
+      "status": "2",
       "event": "ET00452034"
     },
     "ET00452034|PVPZ|35497|20260731|BUDGET": {
@@ -1158,7 +1158,7 @@
       "date": "20260723",
       "cat": "ELITE",
       "price": "210.98",
-      "status": "1",
+      "status": "2",
       "event": "ET00452034"
     },
     "ET00452034|PVPZ|35497|20260723|BUDGET": {
@@ -1248,7 +1248,7 @@
       "date": "20260724",
       "cat": "ELITE",
       "price": "210.98",
-      "status": "1",
+      "status": "2",
       "event": "ET00452034"
     },
     "ET00452034|PVPZ|35497|20260724|BUDGET": {
