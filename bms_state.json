@@ -1293,7 +1293,7 @@
       "date": "20260724",
       "cat": "BUDGET",
       "price": "61.74",
-      "status": "2",
+      "status": "1",
       "event": "ET00452034"
     },
     "ET00452034|PVPZ|35554|20260725|ELITE": {
@@ -1302,7 +1302,7 @@
       "date": "20260725",
       "cat": "ELITE",
       "price": "210.98",
-      "status": "3",
+      "status": "2",
       "event": "ET00452034"
     },
     "ET00452034|PVPZ|35554|20260725|BUDGET": {
@@ -1311,7 +1311,7 @@
       "date": "20260725",
       "cat": "BUDGET",
       "price": "61.74",
-      "status": "2",
+      "status": "1",
       "event": "ET00452034"
     },
     "ET00452034|PVPZ|35554|20260726|ELITE": {
@@ -1329,7 +1329,7 @@
       "date": "20260726",
       "cat": "BUDGET",
       "price": "61.74",
-      "status": "2",
+      "status": "1",
       "event": "ET00452034"
     },
     "ET00452034|PVPZ|35554|20260727|ELITE": {
@@ -1365,7 +1365,7 @@
       "date": "20260728",
       "cat": "BUDGET",
       "price": "61.74",
-      "status": "2",
+      "status": "1",
       "event": "ET00452034"
     },
     "ET00452034|PVPZ|35554|20260729|ELITE": {
@@ -1383,7 +1383,7 @@
       "date": "20260729",
       "cat": "BUDGET",
       "price": "61.74",
-      "status": "2",
+      "status": "1",
       "event": "ET00452034"
     },
     "ET00452034|PVPZ|35554|20260730|ELITE": {
@@ -1401,7 +1401,7 @@
       "date": "20260730",
       "cat": "BUDGET",
       "price": "61.74",
-      "status": "2",
+      "status": "1",
       "event": "ET00452034"
     },
     "ET00452034|PVPZ|35554|20260731|ELITE": {
@@ -1419,7 +1419,7 @@
       "date": "20260731",
       "cat": "BUDGET",
       "price": "61.74",
-      "status": "2",
+      "status": "1",
       "event": "ET00452034"
     },
     "ET00452034|PVPZ|35546|20260720|ELITE": {
@@ -1492,6 +1492,24 @@
       "cat": "BUDGET",
       "price": "61.74",
       "status": "3",
+      "event": "ET00452034"
+    },
+    "ET00452034|INPR|63425|20260720|ELITE": {
+      "venue": "INOX: LUXE Phoenix Market City, Velachery",
+      "time": "11:30 AM",
+      "date": "20260720",
+      "cat": "ELITE",
+      "price": "210.98",
+      "status": "3",
+      "event": "ET00452034"
+    },
+    "ET00452034|INPR|63425|20260720|BUDGET": {
+      "venue": "INOX: LUXE Phoenix Market City, Velachery",
+      "time": "11:30 AM",
+      "date": "20260720",
+      "cat": "BUDGET",
+      "price": "61.74",
+      "status": "2",
       "event": "ET00452034"
     }
   },
