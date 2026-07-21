@@ -3858,7 +3858,7 @@
       "date": "20260725",
       "cat": "ELITE",
       "price": "210.98",
-      "status": "3",
+      "status": "2",
       "event": "ET00452034"
     },
     "ET00452034|INPR|63444|20260725|BUDGET": {
@@ -3885,7 +3885,7 @@
       "date": "20260725",
       "cat": "BUDGET",
       "price": "61.74",
-      "status": "1",
+      "status": "0",
       "event": "ET00452034"
     },
     "ET00452034|PVPZ|35611|20260725|ELITE": {
