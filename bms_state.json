@@ -3363,7 +3363,7 @@
       "date": "20260720",
       "cat": "BUDGET",
       "price": "61.74",
-      "status": "1",
+      "status": "0",
       "event": "ET00452034"
     },
     "ET00452034|INPR|63444|20260720|ELITE": {
@@ -3525,7 +3525,7 @@
       "date": "20260723",
       "cat": "BUDGET",
       "price": "61.74",
-      "status": "1",
+      "status": "0",
       "event": "ET00452034"
     },
     "ET00452034|INPR|63444|20260723|ELITE": {
@@ -4173,7 +4173,7 @@
       "date": "20260727",
       "cat": "BUDGET",
       "price": "61.74",
-      "status": "1",
+      "status": "0",
       "event": "ET00452034"
     },
     "ET00452034|INPR|63444|20260727|ELITE": {
@@ -4335,7 +4335,7 @@
       "date": "20260728",
       "cat": "BUDGET",
       "price": "61.74",
-      "status": "1",
+      "status": "0",
       "event": "ET00452034"
     },
     "ET00452034|INPR|63444|20260728|ELITE": {
@@ -4497,7 +4497,7 @@
       "date": "20260729",
       "cat": "BUDGET",
       "price": "61.74",
-      "status": "1",
+      "status": "0",
       "event": "ET00452034"
     },
     "ET00452034|INPR|63444|20260729|ELITE": {
@@ -4821,7 +4821,7 @@
       "date": "20260731",
       "cat": "BUDGET",
       "price": "61.74",
-      "status": "1",
+      "status": "0",
       "event": "ET00452034"
     },
     "ET00452034|INPR|63444|20260731|ELITE": {
