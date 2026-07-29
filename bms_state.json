@@ -6090,7 +6090,7 @@
       "date": "20260731",
       "cat": "ELITE",
       "price": "210.98",
-      "status": "3",
+      "status": "0",
       "event": "ET00452034"
     },
     "ET00452034|INPR|63877|20260731|BUDGET": {
@@ -6099,7 +6099,7 @@
       "date": "20260731",
       "cat": "BUDGET",
       "price": "61.74",
-      "status": "3",
+      "status": "0",
       "event": "ET00452034"
     }
   },
