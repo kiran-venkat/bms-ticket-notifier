@@ -6353,6 +6353,132 @@
       "price": "61.74",
       "status": "0",
       "event": "ET00452034"
+    },
+    "ET00452034|INPR|63963|20260725|ELITE": {
+      "venue": "INOX: LUXE Phoenix Market City, Velachery",
+      "time": "07:10 PM",
+      "date": "20260725",
+      "cat": "ELITE",
+      "price": "210.98",
+      "status": "1",
+      "event": "ET00452034"
+    },
+    "ET00452034|INPR|63963|20260725|BUDGET": {
+      "venue": "INOX: LUXE Phoenix Market City, Velachery",
+      "time": "07:10 PM",
+      "date": "20260725",
+      "cat": "BUDGET",
+      "price": "61.74",
+      "status": "2",
+      "event": "ET00452034"
+    },
+    "ET00452034|INPR|63963|20260726|ELITE": {
+      "venue": "INOX: LUXE Phoenix Market City, Velachery",
+      "time": "07:10 PM",
+      "date": "20260726",
+      "cat": "ELITE",
+      "price": "210.98",
+      "status": "1",
+      "event": "ET00452034"
+    },
+    "ET00452034|INPR|63963|20260726|BUDGET": {
+      "venue": "INOX: LUXE Phoenix Market City, Velachery",
+      "time": "07:10 PM",
+      "date": "20260726",
+      "cat": "BUDGET",
+      "price": "61.74",
+      "status": "2",
+      "event": "ET00452034"
+    },
+    "ET00452034|INPR|63963|20260727|ELITE": {
+      "venue": "INOX: LUXE Phoenix Market City, Velachery",
+      "time": "07:10 PM",
+      "date": "20260727",
+      "cat": "ELITE",
+      "price": "210.98",
+      "status": "1",
+      "event": "ET00452034"
+    },
+    "ET00452034|INPR|63963|20260727|BUDGET": {
+      "venue": "INOX: LUXE Phoenix Market City, Velachery",
+      "time": "07:10 PM",
+      "date": "20260727",
+      "cat": "BUDGET",
+      "price": "61.74",
+      "status": "2",
+      "event": "ET00452034"
+    },
+    "ET00452034|INPR|63963|20260728|ELITE": {
+      "venue": "INOX: LUXE Phoenix Market City, Velachery",
+      "time": "07:10 PM",
+      "date": "20260728",
+      "cat": "ELITE",
+      "price": "210.98",
+      "status": "1",
+      "event": "ET00452034"
+    },
+    "ET00452034|INPR|63963|20260728|BUDGET": {
+      "venue": "INOX: LUXE Phoenix Market City, Velachery",
+      "time": "07:10 PM",
+      "date": "20260728",
+      "cat": "BUDGET",
+      "price": "61.74",
+      "status": "2",
+      "event": "ET00452034"
+    },
+    "ET00452034|INPR|63963|20260729|ELITE": {
+      "venue": "INOX: LUXE Phoenix Market City, Velachery",
+      "time": "07:10 PM",
+      "date": "20260729",
+      "cat": "ELITE",
+      "price": "210.98",
+      "status": "1",
+      "event": "ET00452034"
+    },
+    "ET00452034|INPR|63963|20260729|BUDGET": {
+      "venue": "INOX: LUXE Phoenix Market City, Velachery",
+      "time": "07:10 PM",
+      "date": "20260729",
+      "cat": "BUDGET",
+      "price": "61.74",
+      "status": "2",
+      "event": "ET00452034"
+    },
+    "ET00452034|INPR|63963|20260730|ELITE": {
+      "venue": "INOX: LUXE Phoenix Market City, Velachery",
+      "time": "07:10 PM",
+      "date": "20260730",
+      "cat": "ELITE",
+      "price": "210.98",
+      "status": "1",
+      "event": "ET00452034"
+    },
+    "ET00452034|INPR|63963|20260730|BUDGET": {
+      "venue": "INOX: LUXE Phoenix Market City, Velachery",
+      "time": "07:10 PM",
+      "date": "20260730",
+      "cat": "BUDGET",
+      "price": "61.74",
+      "status": "2",
+      "event": "ET00452034"
+    },
+    "ET00452034|INPR|63963|20260731|ELITE": {
+      "venue": "INOX: LUXE Phoenix Market City, Velachery",
+      "time": "07:10 PM",
+      "date": "20260731",
+      "cat": "ELITE",
+      "price": "210.98",
+      "status": "1",
+      "event": "ET00452034"
+    },
+    "ET00452034|INPR|63963|20260731|BUDGET": {
+      "venue": "INOX: LUXE Phoenix Market City, Velachery",
+      "time": "07:10 PM",
+      "date": "20260731",
+      "cat": "BUDGET",
+      "price": "61.74",
+      "status": "2",
+      "event": "ET00452034"
     }
   },
   "dates": {
@@ -6381,11 +6507,12 @@
     "ET00475569|20260710": "NOT_OPEN",
     "ET00452034|20260730": "AVAILABLE",
     "ET00452034|20260731": "BOOKABLE",
-    "ET00452034|20260801": "AVAILABLE",
+    "ET00452034|20260801": "BOOKABLE",
     "ET00452034|20260802": "AVAILABLE",
     "ET00452034|20260803": "AVAILABLE",
     "ET00452034|20260804": "AVAILABLE",
     "ET00452034|20260805": "AVAILABLE",
-    "ET00452034|20260806": "AVAILABLE"
+    "ET00452034|20260806": "AVAILABLE",
+    "ET00452034|20260807": "NOT_OPEN"
   }
 }
